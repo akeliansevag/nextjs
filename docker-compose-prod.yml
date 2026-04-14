@@ -7,6 +7,8 @@ services:
       dockerfile: Dockerfile.prod
     networks:
       - nextjs
+    ports:
+      - 3000:3000
 networks:
   nextjs:
     driver: bridge
