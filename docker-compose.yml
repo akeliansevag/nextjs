@@ -1,0 +1,22 @@
+services:
+  nextjs:
+    container_name: nextjs
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - node_modules:/frontend/node_modules
+      - next:/frontend/.next
+      - ./:/frontend
+    networks:
+      - nextjs
+      - npm
+volumes:
+  next:
+  node_modules:
+networks:
+  nextjs:
+    driver: bridge
+  npm:
+    external: true
